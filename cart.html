@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - DJ Wukong Merch</title>
+    <link rel="stylesheet" href="cartstyle.css">
+</head>
+<body>
+    <header>
+        <h1>DJ Wukong Cart</h1>
+        <p>Your selected items are listed below</p>
+        <a id="cart-link" href="merch.html">Continue Shopping</a>
+    </header>
+
+    <section id="cart-table">
+        <h2>Your Cart</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Image</th> <!-- New column for Image -->
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Cart items will appear here -->
+                <tr>
+                    <td colspan="5">Your cart is empty</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 DJ Wukong Official. All rights reserved. Follow <a href="#">@DJWukong</a> for updates.</p>
+    </footer>
+
+    <script src="cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wukong Army Sleeveless (White)</title>
+    <link rel="stylesheet" href="merchstyle.css">
+</head>
+<body>
+    <header>
+        <h1>Wukong Army Sleeveless (White)</h1>
+        <p>Keep it fresh with this white sleeveless shirt from the Wukong Army collection!</p>
+        <a href="cart.html" id="cart-link" class="cart-link">View Cart</a>
+    </header>
+    <section class="product-page">
+        <div class="product-details">
+            <img src="C:\\Users\\ljxse\\OneDrive\\Documents\\assg1 website\\Wukong Army Sleeveless (White).jpg" 
+                 alt="Wukong Army Sleeveless (White)">
+            
+            <div class="product-info">
+                <h2>Wukong Army Sleeveless (White)</h2>
+                <p><strong>Price:</strong> $40 USD</p>
+                
+                <!-- Quantity Control -->
+                <div class="quantity">
+                    <button id="decrease" class="quantity-btn">-</button>
+                    <input type="number" id="quantity" value="1" min="1" readonly>
+                    <button id="increase" class="quantity-btn">+</button>
+                </div>
+
+                <!-- Color and Size Options -->
+                <div class="options">
+                    <label for="color">Color:</label>
+                    <select id="color" name="color">
+                        <option value="white">White</option>
+                    </select>
+
+                    <label for="size">Size:</label>
+                    <select id="size" name="size">
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+
+                <p><strong>Description:</strong> This white sleeveless shirt is perfect for a casual day out or as a part of your Wukong Army gear.</p>
+
+                <!-- Add to Cart Button -->
+                <button id="addToCart" class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        
+        <!-- Back to Main Merch Store -->
+        <a href="merch.html">Back to Merch Store</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 DJ Wukong Official. All rights reserved. Follow <a href="#">@DJWukong</a> for updates.</p>
+    </footer>
+
+    <script>
+        // Quantity Control
+        let quantity = 1;
+        const quantityInput = document.getElementById('quantity');
+        const decreaseBtn = document.getElementById('decrease');
+        const increaseBtn = document.getElementById('increase');
+
+        decreaseBtn.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                quantityInput.value = quantity;
+            }
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            quantity++;
+            quantityInput.value = quantity;
+        });
+
+        // Add to Cart Functionality
+        const addToCartBtn = document.getElementById('addToCart');
+
+        addToCartBtn.addEventListener('click', () => {
+            const selectedSize = document.getElementById('size').value;
+            const product = {
+                name: "Wukong Army Sleeveless (White)",
+                price: 40,
+                quantity: quantity,
+                size: selectedSize,
+                color: "White"
+            };
+
+            // Retrieve cart from localStorage or initialize an empty array
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if the item already exists in the cart
+            const existingProduct = cart.find(
+                item => item.name === product.name && item.size === product.size
+            );
+
+            if (existingProduct) {
+                // Update quantity if the product exists
+                existingProduct.quantity += product.quantity;
+            } else {
+                // Add new product to the cart
+                cart.push(product);
+            }
+
+            // Save updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`${product.name} (${product.size}) has been added to your cart!`);
+        });
+    </script>
+</body>
+</html>

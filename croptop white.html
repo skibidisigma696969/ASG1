@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wukong's Baby Girl Crop Top (White)</title>
+    <link rel="stylesheet" href="merchstyle.css">
+</head>
+<body>
+    <header>
+        <h1>Wukong's Baby Girl Crop Top (White)</h1>
+        <p>Stay stylish with this exclusive white crop top from the Wukong collection!</p>
+        <a href="cart.html" id="cart-link" class="cart-link">View Cart</a>
+    </header>
+    <section class="product-page">
+        <div class="product-details">
+            <img src="C:\\Users\\ljxse\\OneDrive\\Documents\\assg1 website\\Wukong's Baby Girl Crop Top(White).jpg" alt="Wukong's Baby Girl Crop Top (White)">
+            
+            <div class="product-info">
+                <h2>Wukong's Baby Girl Crop Top (White)</h2>
+                <p><strong>Price:</strong> $40 USD</p>
+                
+                <!-- Quantity Control -->
+                <div class="quantity">
+                    <button id="decrease" class="quantity-btn">-</button>
+                    <input type="number" id="quantity" value="1" min="1" readonly>
+                    <button id="increase" class="quantity-btn">+</button>
+                </div>
+
+                <!-- Color and Size Options -->
+                <div class="options">
+                    <label for="color">Color:</label>
+                    <select id="color" name="color">
+                        <option value="white">White</option>
+                    </select>
+
+                    <label for="size">Size:</label>
+                    <select id="size" name="size">
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+
+                <p><strong>Description:</strong> This white crop top is perfect for any casual outing or just to show off your love for Wukong!</p>
+
+                <!-- Add to Cart Button -->
+                <button id="addToCart" class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        
+        <!-- Back to Main Merch Store -->
+        <a href="merch.html">Back to Merch Store</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 DJ Wukong Official. All rights reserved. Follow <a href="#">@DJWukong</a> for updates.</p>
+    </footer>
+
+    <script>
+        // Quantity Control
+        let quantity = 1;
+        const quantityInput = document.getElementById('quantity');
+        const decreaseBtn = document.getElementById('decrease');
+        const increaseBtn = document.getElementById('increase');
+
+        decreaseBtn.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                quantityInput.value = quantity;
+            }
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            quantity++;
+            quantityInput.value = quantity;
+        });
+
+        // Add to Cart Functionality
+        const addToCartBtn = document.getElementById('addToCart');
+
+        addToCartBtn.addEventListener('click', () => {
+            const selectedColor = document.getElementById('color').value;
+            const selectedSize = document.getElementById('size').value;
+            const product = {
+                name: "Wukong's Baby Girl Crop Top (White)",
+                price: 40,
+                quantity: quantity,
+                color: selectedColor,
+                size: selectedSize
+            };
+
+            // Retrieve cart from localStorage or initialize an empty array
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if the item already exists in the cart
+            const existingProduct = cart.find(
+                item => item.name === product.name && item.color === product.color && item.size === product.size
+            );
+
+            if (existingProduct) {
+                // Update the quantity if the product already exists
+                existingProduct.quantity += product.quantity;
+            } else {
+                // Add the new product to the cart
+                cart.push(product);
+            }
+
+            // Save the updated cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`${product.name} (${product.color}, ${product.size}) has been added to your cart!`);
+        });
+    </script>
+</body>
+</html>

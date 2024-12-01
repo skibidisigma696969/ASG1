@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WUKONG's Cap</title>
+    <link rel="stylesheet" href="merchstyle.css">
+</head>
+<body>
+    <header>
+        <h1>WUKONG's Cap</h1>
+        <p>Top off your outfit with the official WUKONG's Cap!</p>
+        <a href="cart.html" id="cart-link" class="cart-link">View Cart</a>
+    </header>
+    <section class="product-page">
+        <div class="product-details">
+            <img src="C:\\Users\\ljxse\\OneDrive\\Documents\\assg1 website\\WUKONG's Cap.jpg" alt="WUKONG's Cap">
+            
+            <div class="product-info">
+                <h2>WUKONG's Cap</h2>
+                <p><strong>Price:</strong> $30 USD</p>
+                
+                <!-- Quantity Control -->
+                <div class="quantity">
+                    <button id="decrease" class="quantity-btn">-</button>
+                    <input type="number" id="quantity" value="1" min="1" readonly>
+                    <button id="increase" class="quantity-btn">+</button>
+                </div>
+
+                <!-- Color and Size Options -->
+                <div class="options">
+                    <label for="color">Color:</label>
+                    <select id="color" name="color">
+                        <option value="black">Black</option>
+                    </select>
+
+                    <label for="size">Size:</label>
+                    <select id="size" name="size">
+                        <option value="one-size">One Size</option>
+                    </select>
+                </div>
+
+                <p><strong>Description:</strong> WUKONG's Cap is the perfect addition to your collection. Represent the WUKONG brand wherever you go!</p>
+
+                <!-- Add to Cart Button -->
+                <button id="addToCart" class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        
+        <!-- Back to Main Merch Store -->
+        <a href="merch.html">Back to Merch Store</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 DJ Wukong Official. All rights reserved. Follow <a href="#">@DJWukong</a> for updates.</p>
+    </footer>
+
+    <script>
+        // Quantity Control
+        let quantity = 1;
+        const quantityInput = document.getElementById('quantity');
+        const decreaseBtn = document.getElementById('decrease');
+        const increaseBtn = document.getElementById('increase');
+
+        decreaseBtn.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                quantityInput.value = quantity;
+            }
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            quantity++;
+            quantityInput.value = quantity;
+        });
+
+        // Add to Cart Functionality
+        const addToCartBtn = document.getElementById('addToCart');
+
+        addToCartBtn.addEventListener('click', () => {
+            const selectedSize = document.getElementById('size').value;
+            const selectedColor = document.getElementById('color').value;
+            const product = {
+                name: "WUKONG's Cap",
+                price: 30,
+                quantity: quantity,
+                size: selectedSize,
+                color: selectedColor
+            };
+
+            // Retrieve cart from localStorage or initialize an empty array
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if the item already exists in the cart
+            const existingProduct = cart.find(
+                item => item.name === product.name && item.size === product.size && item.color === product.color
+            );
+
+            if (existingProduct) {
+                // Update quantity if the product exists
+                existingProduct.quantity += product.quantity;
+            } else {
+                // Add new product to the cart
+                cart.push(product);
+            }
+
+            // Save updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`${product.name} (${product.size}, ${product.color}) has been added to your cart!`);
+        });
+    </script>
+</body>
+</html>

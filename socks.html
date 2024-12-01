@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WUKONG SOCKS (3 PAIRS)</title>
+    <link rel="stylesheet" href="merchstyle.css">
+</head>
+<body>
+    <header>
+        <h1>WUKONG SOCKS (3 PAIRS)</h1>
+        <p>Step up your game with a set of 3 pairs of Wukong socks!</p>
+        <a href="cart.html" id="cart-link" class="cart-link">Cart</a>
+    </header>
+    <section class="product-page">
+        <div class="product-details">
+            <img src="C:\Users\ljxse\OneDrive\Documents\assg1 website\WUKONG SOCKS (3 PAIRS).jpg"
+             alt="WUKONG SOCKS (3 PAIRS)">
+            
+            <div class="product-info">
+                <h2>WUKONG SOCKS (3 PAIRS)</h2>
+                <p><strong>Price:</strong> $20 USD</p>
+                
+                <!-- Quantity Control -->
+                <div class="quantity">
+                    <button id="decrease" class="quantity-btn">-</button>
+                    <input type="number" id="quantity" value="1" min="1" readonly>
+                    <button id="increase" class="quantity-btn">+</button>
+                </div>
+
+                <!-- Color and Size Options -->
+                <div class="options">
+                    <label for="color">Color:</label>
+                    <select id="color" name="color">
+                        <option value="white">White</option>
+                        <option value="black">Black</option>
+                        <option value="gray">Gray</option>
+                    </select>
+
+                    <label for="size">Size:</label>
+                    <select id="size" name="size">
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+
+                <p><strong>Description:</strong> This set of 3 pairs of Wukong socks is perfect for any occasion, featuring comfort and style.</p>
+
+                <!-- Add to Cart Button -->
+                <button id="addToCart" class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        
+        <!-- Back to Main Merch Store -->
+        <a href="merch.html">Back to Merch Store</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 DJ Wukong Official. All rights reserved. Follow <a href="#">@DJWukong</a> for updates.</p>
+    </footer>
+
+    <script>
+        // Quantity Control
+        let quantity = 1;
+        const quantityInput = document.getElementById('quantity');
+        const decreaseBtn = document.getElementById('decrease');
+        const increaseBtn = document.getElementById('increase');
+
+        decreaseBtn.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                quantityInput.value = quantity;
+            }
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            quantity++;
+            quantityInput.value = quantity;
+        });
+
+        // Add to Cart Functionality
+        const addToCartBtn = document.getElementById('addToCart');
+
+        addToCartBtn.addEventListener('click', () => {
+            const product = {
+                name: "WUKONG SOCKS (3 PAIRS)",
+                price: 20,
+                quantity: quantity,
+                color: document.getElementById('color').value,
+                size: document.getElementById('size').value
+            };
+
+            // Retrieve existing cart from localStorage or initialize an empty array
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if the item already exists in the cart
+            const existingProduct = cart.find(item => 
+                item.name === product.name && 
+                item.color === product.color && 
+                item.size === product.size
+            );
+
+            if (existingProduct) {
+                // Update quantity if the product exists
+                existingProduct.quantity += product.quantity;
+            } else {
+                // Add new product to the cart
+                cart.push(product);
+            }
+
+            // Save updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`${product.name} has been added to your cart!`);
+        });
+    </script>
+</body>
+</html>

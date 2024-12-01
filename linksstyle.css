@@ -1,0 +1,90 @@
+/* General Reset */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background-color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    padding: 20px 20px;
+    position: relative; /* For positioning the "Back to Home" link */
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #ff9800;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #fff;
+}
+
+/* Back to Home Link */
+.back-to-home {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #ff9800;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.back-to-home:hover {
+    text-decoration: underline;
+}
+
+/* Music Video Embed Styling */
+.music-embed {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.music-embed h2 {
+    font-size: 2em;
+    color: #ff9800;
+    margin-bottom: 20px;
+}
+
+.embed iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border: none;
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for glowing effect */
+}
+
+/* Hover effect for glowing around the YouTube video */
+.embed iframe:hover {
+    box-shadow: 0 0 15px 5px rgba(255, 152, 0, 0.8); /* Glowing effect with orange color */
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #1a1a1a;
+    color: #cccccc;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #ff5722;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

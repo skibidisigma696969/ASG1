@@ -1,0 +1,136 @@
+/* General Reset */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background-color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+}
+
+/* Import the Bokor font (if you're using Google Fonts or another service) */
+@font-face {
+    font-family: "Bokor";
+    src: url("path_to_your_font_file/bokor-regular.woff2") format("woff2"),
+         url("path_to_your_font_file/bokor-regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Main Image Background */
+.main-image {
+    background-image: url("C:\\Users\\ljxse\\OneDrive\\Documents\\assg1 website\\maingif.gif"); /* Path to your image */
+    background-size: cover; /* Ensures the image covers the screen */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+    height: 100vh; /* Makes the image take up the full screen height */
+    width: 100%; /* Ensures it spans the full width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds text shadow for better readability */
+    filter: brightness(0.5) contrast(1); /* Reduce brightness, keep contrast, and add a blur effect */
+}
+
+/* Remove border in the header */
+header {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0); 
+    position: absolute;
+    top: 5%; /* Moves the title up */
+    left: 0;
+    right: 0;
+    z-index: 1;
+    border: none; 
+    outline: none; 
+}
+
+header h1 {
+    font-size: 10em; /* Larger font size for WukongWorld */
+    font-family: "Bokor", system-ui; /* Apply Bokor font */
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em; /* Smaller size for the description */
+    margin-top: 10px;
+}
+
+/* Features Section */
+.features {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #2a2a2a;
+    color: #fff;
+    z-index: 1;
+}
+
+.features h2 {
+    font-size: 2.5em;
+    color: #ff9800;
+    margin-bottom: 20px;
+}
+
+.features ul {
+    list-style: none;
+}
+
+.features ul li {
+    margin: 10px 0;
+}
+
+.features a {
+    color: #ff5722;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.features a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #1a1a1a;
+    color: #cccccc;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #ff5722;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 3em; /* Adjusted size for smaller screens */
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    .features h2 {
+        font-size: 2em;
+    }
+
+    .features ul li {
+        font-size: 1em;
+    }
+}
